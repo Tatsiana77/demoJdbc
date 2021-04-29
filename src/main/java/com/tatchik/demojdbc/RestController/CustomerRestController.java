@@ -18,7 +18,7 @@ public class CustomerRestController {
         this.customerDao = customerDao;
     }
 
-    @GetMapping("/customer")
+    @GetMapping("/api/customer")
     List<Customer> getAllCustomer(){
         return  customerDao.getAllCustomer();
     }

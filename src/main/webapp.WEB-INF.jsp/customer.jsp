@@ -1,34 +1,87 @@
+%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Customer info</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Customers </title>
 </head>
-<div align="left">
+<body>
+<div align="center">
+    <h2>Customer</h2>
+    <form method="get" action="search">
+        <input type="text" name="keyword" />
+        <input type="submit" value="Search" />
+    </form>
+    <h3><a href="/new">New Customer</a></h3>
     <table border="1" cellpadding="5">
-        <caption><h2>List of Customers</h2></caption>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Surname</th>
-            <th>customer_Address</th>
-            <th>customer_Phone</th>
-            <th>customer_email</th>
-            <th>Actions</th>
+            <th>E-mail</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Action</th>
         </tr>
-        <c:forEach var="customer" items="${customers}">
+        <c:forEach items="${customers}" var="customer">
             <tr>
-                <td><c:out value="${customer.id}" /></td>
-                <td><c:out value="${customer.name}" /></td>
-                <td><c:out value="${customer.surname}" /></td>
-                <td><c:out value="${customer.customer_Address}" /></td>
-                <td><c:out value="${customer.customer_Phone}" /></td>
-                <td><c:out value="${customer.customer_email}" /></td>
-                <td><button>Orders</button></td>
-                <td><button><a href="customers/orders?id=${customer.id}">Orders</a></button></td>
-                <td><button><a href="customers/edit?id=${customer.id}">Edit</a></button></td>
+                <td>${customer.id}</td>
+                <td>${customer.name}</td>%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+                pageEncoding="ISO-8859-1"%>
+                <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+                <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+                <html>
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+                    <title>Customer Manager</title>
+                </head>
+                <body>
+                <div align="center">
+                    <h2>Customer Manager</h2>
+                    <form method="get" action="search">
+                        <input type="text" name="keyword" />
+                        <input type="submit" value="Search" />
+                    </form>
+                    <h3><a href="/new">New Customer</a></h3>
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>E-mail</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                        <c:forEach items="${listCustomer}" var="customer">
+                            <tr>
+                                <td>${customer.id}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.surname}</td>
+                                <td>${customer.email}</td>
+                                <td>${customer.address}</td>
+                                <td>${customer.phone}</td>
+                                <td>
+                                    <a href="/edit?id=${customer.id}">Edit</a>
 
+                                    <a href="/delete?id=${customer.id}">Delete</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                </body>
+                </html>
+                <td>${customer.email}</td>
+                <td>${customer.address}</td>
+                <td>
+                    <a href="/edit?id=${customer.id}">Edit</a>
+
+                    <a href="/delete?id=${customer.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>

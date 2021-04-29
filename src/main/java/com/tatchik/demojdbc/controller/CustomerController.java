@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,24 +24,31 @@ public class CustomerController {
     }
 
 
-    @RequestMapping("/customers")
+
+    @RequestMapping(value = "/customers", method =  RequestMethod.GET)
     public String getAllCustomer(ModelMap modelmap) {
-        List<Customer> customers = customerDao.getAllCustomer();
-        modelmap.addAttribute("customers", customers);
-        return "customers";
+        List<Customer> customer = customerDao.getAllCustomer();
+        modelmap.addAttribute("customers", customer);
+        return "customer";
     }
 
 
-    @RequestMapping("/customer/edit")
+    @RequestMapping(value = "/customer/edit", method = RequestMethod.POST)
     public String editCustomer(ModelMap modelMap, @RequestParam Integer id) {
-        Customer customerDto = customerDao.getCustomerById(id);
-        modelMap.addAttribute("customer", customerDto);
-        return "editCustomer";
+        Customer customer = customerDao.getCustomerById(id);
+        modelMap.addAttribute("customer", customer);
+        return "edit_Customer";
     }
 
-    @RequestMapping("edit-customer")
+    @RequestMapping(value = "edit-customer", method = RequestMethod.POST)
     public String  saveCustomer(@ModelAttribute("customer" ) Customer  customer){
         customerDao.saveEntity(customer);
         return "redirect:/customers";
+    }
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String newCustomer(List<Customer > customerList)  {
+        Customer customer = new Customer();
+        customerList.add(Integer.parseInt("customer"), customer);
+        return "new_customer";
     }
 }

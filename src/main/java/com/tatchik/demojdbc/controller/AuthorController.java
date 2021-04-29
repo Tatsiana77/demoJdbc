@@ -42,6 +42,7 @@ public class AuthorController {
         authorDao.saveEntity(author);
         return "redirect:/author";
     }
+
     @RequestMapping("/author/{id}")
     public String deleteAuthor(ModelMap modelMap, @RequestParam Integer id){
        authorDao.deleteById(id);
