@@ -30,7 +30,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBookWithJoin() {
-        String sql = "SELECT  * FROM Book FULL  OUTER JOIN Author ON Book.Author_id = Author.id";
+        String sql = "SELECT  * FROM Book  Left JOIN Author ON Book.Author_id = Author.id";
         List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
         return books;
 
