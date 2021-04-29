@@ -28,6 +28,11 @@ public class BookRestController {
     public List<Book> getAllBookWithJoin() {
         return bookDao.getAllBookWithJoin();
     }
+    @GetMapping("/api/book/bookWithCustomer")
+    public List<Book> getAllBookWithCustomer(){
+        return bookDao.getAllBookWithCustomer();
+    }
+
 
 
 }

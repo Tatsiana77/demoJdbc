@@ -12,6 +12,8 @@ public interface BookDao {
 
     public List<Book> getAllBookWithJoin();
 
+    public List<Book> getAllBookWithCustomer();
+
     void saveBook(Book book);
 
     public void deleteBookById(Integer idBook);

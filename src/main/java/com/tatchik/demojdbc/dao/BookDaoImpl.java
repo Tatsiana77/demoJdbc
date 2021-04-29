@@ -37,6 +37,14 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public List<Book> getAllBookWithCustomer() {
+        String sql = "SELECT  * FROM Book  Left JOIN Customer ON Book.Customer_id = Customer.id";
+        List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
+        return books;
+    }
+
+
+    @Override
     public void saveBook(Book book) {
         String SQL = "INSERT INTO Book (title)  VALUES ( 11, ?, ?)";
         jdbcTemplate.update(SQL, book.getTitle());
