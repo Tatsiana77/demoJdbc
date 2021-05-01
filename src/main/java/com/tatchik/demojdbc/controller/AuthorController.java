@@ -21,8 +21,7 @@ public class AuthorController {
         this.authorDao = authorDao;
     }
 
-
-    @RequestMapping(value="/authors", method = RequestMethod.GET)
+    @RequestMapping(value="/authors")
     public String getAllAuthor(ModelMap modelMap) {
         List<Author> author = authorDao.getAllAuthor();
         modelMap.addAttribute("author", author);
@@ -46,7 +45,7 @@ public class AuthorController {
     @RequestMapping("/author/{id}")
     public String deleteAuthor(ModelMap modelMap, @RequestParam Integer id){
        authorDao.deleteById(id);
-        return  "deleteAuthor";
+        return  "delAuthor";
     }
 
 }

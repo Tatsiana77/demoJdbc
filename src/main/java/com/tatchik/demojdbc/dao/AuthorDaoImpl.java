@@ -34,6 +34,8 @@ public class AuthorDaoImpl implements AuthorDao {
         return null;
     }
 
+
+
     @Override
     public void saveEntity(Author author) {
         String SQL = "INSERT INTO Author VALUES (6, ?,?)";

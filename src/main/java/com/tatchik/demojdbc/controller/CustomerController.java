@@ -25,7 +25,7 @@ public class CustomerController {
 
 
 
-    @RequestMapping(value = "/customers", method =  RequestMethod.GET)
+    @RequestMapping(value = "/customers")
     public String getAllCustomer(ModelMap modelmap) {
         List<Customer> customer = customerDao.getAllCustomer();
         modelmap.addAttribute("customers", customer);

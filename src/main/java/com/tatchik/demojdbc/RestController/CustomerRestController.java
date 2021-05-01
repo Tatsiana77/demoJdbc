@@ -19,7 +19,12 @@ public class CustomerRestController {
     }
 
     @GetMapping("/api/customer")
-    List<Customer> getAllCustomer(){
+    public List<Customer> getAllCustomer(){
         return  customerDao.getAllCustomer();
+    }
+
+    @GetMapping("/api/customerWithBook")
+    public List<Customer> getCustomerWithBook(){
+        return customerDao.getCustomerWithBook();
     }
 }

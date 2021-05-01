@@ -1,30 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Author Info</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP List Users Records</title>
 </head>
 <body>
-<div align="left">
+
+<div align="center">
     <table border="1" cellpadding="5">
-        <caption><h2>List of  Author</h2></caption>
+        <caption><h2>List of users</h2></caption>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Surname</th>
-            <th>Actions</th>
+            <th>Action</th>
         </tr>
-<ul>
-    <c:forEach var="author" items="${author}">
-        <li><c:out value="${author}" /></li>
-    </c:forEach>
+        <table>
+            <c:forEach var="authors" items="${author}">
+            <tr>
+                <td><c:out value="${author.id}" /></td>
+                <td><c:out value="${author.name}" /></td>
+                <td><c:out value="${author.surname}" /></td>
 
-        <tr>
-            <td><button>Book</button></td>
-            <td><button><a href="authors/books?id=${author.id}"> Book </a></button></td>
-            <td><button><a href="authors/edit?id=${author.id}"> Edit </a></button></td>
-        </tr>
+            </tr>
+        </c:forEach></table>
+
+    </table>
 </div>
 </body>
 </html>

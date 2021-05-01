@@ -21,11 +21,11 @@ public class BookController {
         this.bookDao = bookDao;
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @RequestMapping(value = "/books")
     public String getAllBook(ModelMap modelMap) {
-        List<Book> books = bookDao.getAllBookWithJoin();
+        List<Book> books = bookDao.getAllBook();
         modelMap.addAttribute("books", books);
-        return "books";
+        return "book";
     }
 
 }

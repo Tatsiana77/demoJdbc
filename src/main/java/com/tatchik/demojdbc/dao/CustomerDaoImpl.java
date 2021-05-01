@@ -22,7 +22,9 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> getCustomerWithBook() {
-        return null;
+        String sql = "SELECT  * FROM Book  Left JOIN Customer ON Book.Customer_id = Customer.id";
+        List<Customer> customers = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Customer.class) );
+        return customers;
     }
 
     @Override
